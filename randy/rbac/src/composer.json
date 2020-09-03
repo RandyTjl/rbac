@@ -1,0 +1,17 @@
+{
+    "name": "randy/rbac",
+    "description": "this is a rbac package",
+    "type": "composer-plugin",
+    "license": "1.0",
+    "authors": [
+        {
+            "name": "罚奈",
+            "email": "3268429734@qq.com"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": { "Randy\\Rbac\\": "src/"}
+    }
+}
