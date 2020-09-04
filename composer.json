@@ -2,7 +2,6 @@
     "name": "randy-tang/rbac",
     "description": "this is a rbac package",
     "type": "composer-plugin",
-    "license": "1.0.0",
     "authors": [
         {
             "name": "罚奈",
