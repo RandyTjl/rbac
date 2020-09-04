@@ -34,6 +34,11 @@ class RbacServiceProvider extends ServiceProvider
     {
         //
         $this->loadRoutesFrom(__DIR__.'/routes.php');
+        //发布数据库
+        $this->publishes([
+            __DIR__ . '/data/migrations/' => database_path('migrations'),
+            __DIR__ . '/data/seeds/' => database_path('seeds'),
+        ]);
     }
 }
 
