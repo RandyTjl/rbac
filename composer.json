@@ -1,5 +1,5 @@
 {
-    "name": "randyTang/rbac",
+    "name": "randy-tang/rbac",
     "description": "this is a rbac package",
     "type": "composer-plugin",
     "license": "1.0",
