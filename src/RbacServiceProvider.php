@@ -8,7 +8,7 @@
 namespace Randy\Rbac;
 
 use Illuminate\Support\ServiceProvider;
-use Randy\Rbac\Http\Varm;
+use Randy\Rbac\Http\Rbac;
 
 class RbacServiceProvider extends ServiceProvider
 {
@@ -21,7 +21,7 @@ class RbacServiceProvider extends ServiceProvider
     {
         //
         $this->app->singleton('rbac',function(){
-            return new Varm;
+            return new Rbac;
         });
     }
 
@@ -38,6 +38,8 @@ class RbacServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/data/migrations/' => database_path('migrations'),
             __DIR__ . '/data/seeds/' => database_path('seeds'),
+            __DIR__ . '/Models/' => app_path('Models'),
+            __DIR__ . '/Middleware/' => app_path('Middleware'),
         ]);
     }
 }
