@@ -16,6 +16,7 @@ use App\Models\MyInterface;
 class Rbac{
 
     protected $admin;
+    protected $admin_id;
     protected $permissions;
     protected $menus;
     protected $role_ids=[];  //角色id列表
@@ -29,7 +30,26 @@ class Rbac{
                 throw new \Exception('用户不存在');
             }
             $this->admin = $admin;
+            $this->admin_id = $admin_id;
         }
+    }
+
+
+
+    /**
+     * Desc 获取管理员
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getAdmin(){
+        if(!$this->admin){
+            $admin = Admin::getOneAdminInfo($this->admin_id);
+            if(empty($admin)){
+                throw new \Exception('用户不存在');
+            }
+            $this->admin = $admin;
+        }
+        return $this->admin;
     }
 
     /**]
@@ -85,31 +105,35 @@ class Rbac{
      * Desc 获取菜单列表
      * @return mixed
      */
-    public function getMenus(){
-        if(!$this->menus){
-            $menus = Menu::getMenus($this->getMenu_ids());
-            $this->menus = $menus;
-        }
-
-        return $this->menus;
+    public function getMenus($menu_ids=[]){
+        $menus = Menu::getMenus($menu_ids);
+        return $menus;
     }
 
     /**
      * Desc 获取处理后的菜单权限列表
      */
-    public function getMenuAll(){
+    public function getMenuAll($menu_ids=[]){
+        if(count($menu_ids)==0){
+            $menu_ids = $this->menu_ids;
+        }
+
         //获取菜单列表
-        $menus = $this->getMenus();
+        $menus = $this->getMenus($menu_ids);
         $menu_all = $this->dealMenu($result=[],$menus);
         return $menu_all;
     }
 
-    public function getPermission(){
+    /**
+     * Desc 得到按钮类表
+     * @param array $per_ids
+     * @return mixed
+     */
+    public function getPermission($per_ids=[]){
         if(!$this->permissions){
-            $permissions = Permission::getPermission($this->getPer_ids());
+            $permissions = Permission::getPermission($per_ids);
             $this->permissions = $permissions;
         }
-
         return $this->permissions;
     }
 
@@ -117,10 +141,13 @@ class Rbac{
      * Desc 获取用户权限拥有的按钮权限
      * @return array
      */
-    public function getPermissionAll(){
+    public function getPermissionAll($per_ids=[]){
+        if(count($per_ids)==0){
+            $per_ids = $this->per_ids;
+        }
+
         //获取按钮权限列表
-        $permissions = Permission::getPermission($this->getPer_ids());
-        $this->permissions = $permissions;
+        $permissions = $this->getPermission($per_ids);
         $per_all = [];  //前端需要的权限组
         foreach ($permissions as $k=>$permission){
             $per_all[] = $permission->menu_per;
@@ -128,6 +155,10 @@ class Rbac{
         return $per_all;
     }
 
+    /**
+     * Desc 获取接口处理
+     * @return array
+     */
     public function getInterface(){
         $interfaces = [];  //后台按钮接口权限
         $permissions = $this->getPermission();
