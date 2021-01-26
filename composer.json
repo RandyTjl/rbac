@@ -12,5 +12,15 @@
     },
     "autoload": {
         "psr-4": { "Randy\\Rbac\\": "src/"}
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Randy\\Rbac\\RbacServiceProvider"
+            ],
+            "aliases": {
+                "Rbac": "Randy\\Rbac\\Facades\\Rbac"
+            }
+        }
     }
 }
