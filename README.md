@@ -14,3 +14,8 @@ php artisan vendor:publish --provider="Randy\Rbac\RbacServiceProvider"
 第四步运行
 php artisan make:seeder perSeeder
 完成数据填充
+
+安装后方法路径
+vendor\randy-tang\rbac\src\Http\Rbac.php
+
+
