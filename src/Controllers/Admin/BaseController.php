@@ -8,6 +8,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Closure;
+use App\Models\MyInterface;
 
 class BaseController extends Controller{
 

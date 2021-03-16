@@ -39,7 +39,7 @@ class RbacServiceProvider extends ServiceProvider
             __DIR__ . '/data/migrations/' => database_path('migrations'),
             __DIR__ . '/data/seeds/' => database_path('seeds'),
             __DIR__ . '/Models/' => app_path('Models'),
-            __DIR__ . '/Middleware/' => app_path('Middleware'),
+            __DIR__ . '/Middleware/' => app_path('Http/Middleware'),
             __DIR__ . '/Controllers/Admin/' => app_path('Http/Controllers/Admin'),
         ]);
     }
