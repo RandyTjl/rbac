@@ -32,7 +32,7 @@ class MyInterface extends Model
      * Desc 获取公共的接口（所有人都可调用的接口）
      * @return mixed
      */
-    public function getCommonInterface(){
+    public static function getCommonInterface(){
         $interface = self::where('type',3)->get();
         return $interface;
     }
@@ -42,7 +42,7 @@ class MyInterface extends Model
      * @param $classAction
      * @return mixed
      */
-    public function getInterfaceByClassAction($classAction){
+    public static function getInterfaceByClassAction($classAction){
         $interface = self::where('classAction', $classAction)->first();
         return $interface;
     }

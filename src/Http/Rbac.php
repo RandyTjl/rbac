@@ -200,12 +200,12 @@ class Rbac{
                 if($parent_id == 0){
                     $result[] = $menu;
                     unset($menus[$k]);
-                    $result[count($result)-1]['children'] = dealMenu($result[count($result)-1]['children'],$menus,$menu->id,$menu_ids,$permission_ids,$type);
+                    $result[count($result)-1]['children'] = $this->dealMenu($result[count($result)-1]['children'],$menus,$menu->id,$menu_ids,$permission_ids,$type);
                 }else{
                     $result[] = $menu;
                     unset($menus[$k]);
                     if(count($menus) > 0){
-                        $result[count($result)-1]['children'] = dealMenu($result[count($result)-1]['children'],$menus,$menu->id,$menu_ids,$permission_ids,$type);
+                        $result[count($result)-1]['children'] = $this->dealMenu($result[count($result)-1]['children'],$menus,$menu->id,$menu_ids,$permission_ids,$type);
                     }
 
                 }

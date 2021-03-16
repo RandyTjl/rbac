@@ -20,7 +20,7 @@ class RoleMenu extends Model
      * @param array $role_ids 角色id列表
      * @return mixed
      */
-    public function getInfoByRoleId($role_ids=[]){
+    public static function getInfoByRoleId($role_ids=[]){
         $role_menus =  self::whereIn('role_id',$role_ids)->get()->toArray();
         return $role_menus;
     }

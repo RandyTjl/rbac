@@ -20,7 +20,7 @@ class RolePermission extends Model
      * @param $role_ids
      * @return mixed
      */
-    public function getInfoByRoleId($role_ids=[]){
+    public static function getInfoByRoleId($role_ids=[]){
         $role_permission =  self::whereIn('role_id',$role_ids)->get()->toArray();
         return $role_permission;
     }

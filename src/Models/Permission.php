@@ -39,7 +39,7 @@ class Permission extends Model
      * @param array $per_ids
      * @return mixed
      */
-    public function getPermisson($per_ids=[]){
+    public static function getPermission($per_ids=[]){
         $permisson =  self::whereIn('id',$per_ids)->where('status',1)->get();
         return $permisson;
     }
